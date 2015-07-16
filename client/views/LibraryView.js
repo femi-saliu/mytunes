@@ -7,6 +7,8 @@ var LibraryView = Backbone.View.extend({
     this.render();
   },
 
+  // event so that when we click on a song, it creates a duplicate in queue
+
   render: function(){
     // to preserve event handlers on child nodes, we must call .detach() on them before overwriting with .html()
     // see http://api.jquery.com/detach/
