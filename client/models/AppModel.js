@@ -31,6 +31,20 @@ var AppModel = Backbone.Model.extend({
       console.log(this.get('songQueue'));
     },this);
 
+    params.library.on('dequeue', function(song){
+      // add song to queue model
+      // if queue is empty, play song, else enqueue
+      this.get('songQueue').remove(song); // Duplicates?
+      // if collection has one song, update currentSong
+      if (this.get('songQueue').length === 1){
+        this.set('currentSong', this.get('songQueue').at(0));
+      }
+
+      //TODO - if the user clicks on the song that is playing
+      // dequeue then start the next song
+      console.log(this.get('songQueue'));
+    },this);
+
 
   },
 
