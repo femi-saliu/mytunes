@@ -8,6 +8,7 @@ var SongQueueEntryView = Backbone.View.extend({
   events: {
   	'click': function() {
   		// remove from queue
+  		console.log('sqev model:',this);
   	  this.model.dequeue();
 
   	}
