@@ -23,7 +23,7 @@ var AppModel = Backbone.Model.extend({
     params.library.on('enqueue', function(song){
       // add song to queue model
       // if queue is empty, play song, else enqueue
-      this.get('songQueue').push(song); // Duplicates?
+      this.get('songQueue').push(song.clone()); // Duplicates?
       // if collection has one song, update currentSong
       if (this.get('songQueue').length === 1){
         this.set('currentSong', this.get('songQueue').at(0));
@@ -31,7 +31,7 @@ var AppModel = Backbone.Model.extend({
       console.log(this.get('songQueue'));
     },this);
 
-    params.library.on('dequeue', function(song){
+    this.get('songQueue').on('dequeue', function(song){
       if (this.get('songQueue').indexOf(song)===0){
         this.songEnded();
       } else {
