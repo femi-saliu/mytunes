@@ -2,8 +2,15 @@
 var SongQueueView = Backbone.View.extend({
 
   initialize: function() {
-  	this.collection.on('add', function(){
+  	this.collection.on('add', function(){ // update
+  		// if !song playing, start song at collection[0]
   		this.render();
+
+  	},this);
+  	this.collection.on('remove', function(){ // update
+  		// if !song playing, start song at collection[0]
+  		this.render();
+
   	},this);
   },
 

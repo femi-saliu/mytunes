@@ -16,7 +16,9 @@ var AppView = Backbone.View.extend({
     }, this);
 
     this.playerView.on('ended',function(){
-      console.log("song ended");
+
+      // call song ended in appmodel
+      this.model.songEnded();
     },this);
   },
 

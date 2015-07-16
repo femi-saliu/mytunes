@@ -5,11 +5,7 @@ var SongQueue = Songs.extend({
 
 
   initialize: function(){
-  },
-
-  enqueue: function(song){
-  	console.log("enqueue from SongQueue");
-  },
+  }
 
 
 });

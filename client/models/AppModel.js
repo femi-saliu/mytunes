@@ -22,9 +22,24 @@ var AppModel = Backbone.Model.extend({
 
     params.library.on('enqueue', function(song){
       // add song to queue model
+      // if queue is empty, play song, else enqueue
       this.get('songQueue').push(song); // Duplicates?
+      // if collection has one song, update currentSong
+      if (this.get('songQueue').length === 1){
+        this.set('currentSong', this.get('songQueue').at(0));
+      }
       console.log(this.get('songQueue'));
     },this);
+
+
+  },
+
+  songEnded: function(){
+    // console.log("song ended function call");
+    // console.log("currentSong before shift:", this.get('songQueue').at(0));
+    this.get('songQueue').shift();
+    this.set('currentSong',this.get('songQueue').at(0));
+    // console.log("currentSong after shift:", this.get('songQueue').at(0));
   }
 
 });
